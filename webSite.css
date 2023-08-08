@@ -11,7 +11,7 @@ div ul{
     display: flex;
     padding: 20px 10px;
     column-gap: 40px;
-    margin-left: 10px;
+    margin-left: 0;
     margin-right: 10px;
     border-radius: 12px;
     text-decoration: none;
@@ -23,6 +23,18 @@ div ul li{
     margin-right: 79px;
     transition: .4s;
 }
+
+ i{
+    margin-right: 50px;
+    margin-top: 4px;
+    font-size: 16px;
+    color: white;
+    position: relative;
+    cursor: pointer;
+}
+i:hover{
+    color: aqua;
+}
 div .part2{
     display: flex;
     font-weight: 800;
@@ -31,6 +43,9 @@ div .part2{
 }
 .dot{
     font-weight: 1000;
+}
+ul .toogle{
+    display: none;
 }
 div ul .logo{
     pointer-events: none;
@@ -47,7 +62,7 @@ div ul li a{
     text-decoration: none;
     color: rgb(252, 251, 251);
 }
-div ul li a:hover,div ul li .active{
+div ul li a:hover,div ul li .active,div ul a i:hover{
     color: aqua;
 }
 .home{
@@ -99,4 +114,71 @@ b{
     box-shadow: 0 0 10px aqua;
     background-color: #081b29;
     border: 1px solid white;
+}
+.dropdown{
+    height: 0;
+    float: right;
+    margin-right: 20px;
+    line-height: 50px;
+    top: 60px;
+    display: none;
+    width: 200px;
+    backdrop-filter: blur(15px);
+    background: rgb(255, 255, 255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transform: height,2s cubic-bazier(0.175,0.885,0.32,1.275);
+}
+.dropdown li{
+    display: flex;
+    justify-content: center;
+}
+
+
+.dropdown li a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+ 
+}
+.dropdown li a:hover,.dropdown li .active{
+    color: aqua;
+}
+@media (max-width:900px){
+    div ul{
+        gap: 20px;
+        margin-right: 5px;
+    }
+    div ul li{
+        margin-right: 50px;
+    }
+}
+@media (max-width:625px){
+    body{
+        width: 625px;
+    }
+}
+@media (max-width:643px){
+    .aravind{
+       
+    }
+    .home{
+        display: block;
+    }
+}
+@media (max-width:759px) {
+    div ul li a,div ul li .active{
+        display: none;
+    }
+   ul .toogle{
+    display: block;
+   }
+   .dropdown{
+    display: none;
+   }
+   .open{
+    display: block;
+    height: 200px;
+}
 }
