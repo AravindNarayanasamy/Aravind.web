@@ -27,7 +27,7 @@ div ul li{
  i{
     margin-right: 50px;
     margin-top: 4px;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     position: relative;
     cursor: pointer;
@@ -177,18 +177,37 @@ b{
     .aravind{
         width: 200px;
     }
+    .homecontent{
+        font-size: 20px;
+    }
 }
 @media screen and (max-width:500px){
     .profile{
         margin-left: 90px;
     }
+    i{
+        font-size:24px ;
+        margin-right: 70px;
+    }
+    .homecontent{
+        font-size: 25px;
+        line-height: 40px;
+    }
+
 }
 @media screen and (max-width:400px){
+    div ul .logo{
+        font-size: 25px;
+    }
     .profile{
         margin-left: 80px;
     }
     .main{
         width: 100%;
+    }
+    i{
+        font-size:25px ;
+        margin-right: 70px;
     }
 }
 
