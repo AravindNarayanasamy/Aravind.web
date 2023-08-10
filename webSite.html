@@ -55,6 +55,8 @@
             
             toogleBtn.onclick = function (){
                 dropdown.classList.toggle('open');
+                const isOpen =dropdown.classList.contains('open');
+                icon .classList=isOpen ? 'fa-solid fa-xmark': 'fa-solid fa-bars'
             }
         </script>
     </body>
