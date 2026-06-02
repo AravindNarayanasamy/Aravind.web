@@ -50,6 +50,45 @@
   });
 
   function php_email_form_submit(thisForm, action, formData) {
+    // Check if EmailJS is configured in config.js
+    if (
+      typeof emailjs !== 'undefined' && 
+      typeof EMAILJS_CONFIG !== 'undefined' && 
+      EMAILJS_CONFIG.SERVICE_ID && 
+      EMAILJS_CONFIG.SERVICE_ID !== 'YOUR_SERVICE_ID' &&
+      EMAILJS_CONFIG.TEMPLATE_ID && 
+      EMAILJS_CONFIG.TEMPLATE_ID !== 'YOUR_TEMPLATE_ID'
+    ) {
+      const templateParams = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        company: formData.get('company') || 'N/A',
+        message: formData.get('message'),
+        time: new Date().toLocaleString()
+      };
+
+      emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
+        .then(() => {
+          thisForm.querySelector('.loading').classList.remove('d-block');
+          thisForm.querySelector('.sent-message').classList.add('d-block');
+          thisForm.reset();
+        })
+        .catch((error) => {
+          displayError(thisForm, error.text || error.message || 'Error sending message via EmailJS');
+        });
+      return;
+    }
+
+    if (action === '#') {
+      setTimeout(() => {
+        thisForm.querySelector('.loading').classList.remove('d-block');
+        thisForm.querySelector('.sent-message').classList.add('d-block');
+        thisForm.reset();
+      }, 1000);
+      return;
+    }
+
     fetch(action, {
       method: 'POST',
       body: formData,
